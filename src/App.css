@@ -4,7 +4,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  padding: 4px 40px; /* Shifted navbar as high as possible */
+  padding: 36px 40px; /* Moved navbar lower by increasing padding */
   display: flex;
   align-items: center;
   z-index: 100;
@@ -911,7 +911,7 @@
 /* Get in Touch / Contact Section matching Leo Burnett exact visual layout */
 .contact-section {
   position: relative;
-  min-height: 65vh; /* Reduced from 100vh to reduce gap below services */
+  min-height: 95vh; /* Increased from 80vh to shift layout further down */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -929,7 +929,7 @@
   width: 100%;
   max-width: 1400px;
   margin: 0 auto;
-  padding: 40px 60px 0; /* Reduced top padding */
+  padding: 200px 60px 0; /* Increased top padding to push contents lower */
   position: relative;
   z-index: 1;
 }
@@ -1165,7 +1165,7 @@
     height: 120px;
   }
   .header {
-    padding: 2px 24px; /* Shifted navbar as high as possible on mobile */
+    padding: 24px 24px; /* Moved navbar lower on mobile by increasing padding */
   }
   .nav-menu-flow {
     position: fixed;
