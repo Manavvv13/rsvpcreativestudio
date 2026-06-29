@@ -4,7 +4,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  padding: 30px 40px;
+  padding: 4px 40px; /* Shifted navbar as high as possible */
   display: flex;
   align-items: center;
   z-index: 100;
@@ -22,6 +22,15 @@
   color: var(--primary);
   filter: drop-shadow(0 0 8px var(--primary-glow));
   flex-shrink: 0;
+}
+
+.header-logo-img {
+  width: 180px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.25));
+  flex-shrink: 0;
+  margin-top: 0; /* Reset top margin since it is cropped */
 }
 
 .line {
@@ -168,8 +177,8 @@
 }
 
 .logo-rsvp-placeholder {
-  height: clamp(280px, 36vw, 480px);
-  width: clamp(280px, 36vw, 480px);
+  height: clamp(180px, 36vw, 480px);
+  width: clamp(180px, 36vw, 480px);
   aspect-ratio: 1;
   display: block;
   margin: 0 auto;
@@ -865,7 +874,7 @@
 }
 
 .service-item.active .service-desc, .service-item:hover .service-desc {
-  max-height: 100px;
+  max-height: 200px; /* Increased from 100px to fit wrapped lines on mobile */
   opacity: 0.85;
   margin-top: 15px;
 }
@@ -1092,7 +1101,7 @@
 
   .contact-giant-title {
     margin-bottom: 0px;
-    font-size: clamp(3.2rem, 14vw, 8rem);
+    font-size: clamp(2rem, 11vw, 5rem);
   }
 }
 
@@ -1156,7 +1165,7 @@
     height: 120px;
   }
   .header {
-    padding: 20px 24px;
+    padding: 2px 24px; /* Shifted navbar as high as possible on mobile */
   }
   .nav-menu-flow {
     position: fixed;
@@ -1181,6 +1190,7 @@
   }
   .mobile-nav-toggle {
     display: block;
+    margin-left: auto;
   }
   .mission-grid, .accolades-grid, .contact-grid {
     grid-template-columns: 1fr;
@@ -1254,6 +1264,9 @@
     flex-direction: column;
     gap: 20px;
   }
+  .mission-text-line {
+    font-size: clamp(1.4rem, 6.2vw, 3.8rem);
+  }
 }
 
 /* Body lock during preloader */
@@ -1267,7 +1280,7 @@ body.preloader-active {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   background-color: #000000;
   z-index: 9999;

@@ -224,7 +224,12 @@ function App() {
 
   const scrollCarousel = (direction) => {
     if (carouselRef.current) {
-      const scrollAmount = 412; // 380px card width + 32px gap
+      const card = carouselRef.current.querySelector('.work-card');
+      const cardWidth = card ? card.offsetWidth : 380;
+      const style = window.getComputedStyle(carouselRef.current);
+      const gap = parseInt(style.gap) || 32;
+      const scrollAmount = cardWidth + gap;
+
       carouselRef.current.scrollBy({
         left: direction === 'left' ? -scrollAmount : scrollAmount,
         behavior: 'smooth'
@@ -288,9 +293,9 @@ function App() {
     },
     {
       id: 4,
-      name: 'Earthcon',
+      name: 'Ashtech Group',
       category: 'Real Estate Developers',
-      video: '/Video 1 (5).mp4'
+      video: '/reel 4.mp4'
     },
     {
       id: 5,
@@ -442,7 +447,7 @@ function App() {
       {/* Header element replicating the exact layout of the reference image */}
       <header className={`header ${isHeaderScrolled ? 'scrolled' : ''}`}>
         <div className="header-left">
-          <SparkleIcon />
+          <img src="/logo.png" alt="Logo" className="header-logo-img" />
           <span className="line line-short"></span>
         </div>
 
