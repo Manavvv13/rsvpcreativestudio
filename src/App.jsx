@@ -9,6 +9,16 @@ function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [emailCopied, setEmailCopied] = useState(false);
+  const [showAshtechPage, setShowAshtechPage] = useState(false);
+
+  const ashtechVideos = [
+    { src: '/ash 1.mp4' },
+    { src: '/ash 2.mp4' },
+    { src: '/ash 3.mp4' },
+    { src: '/reel 4.mp4' },
+    { src: '/ash 4.mp4' },
+    { src: '/ash 5.mp4' }
+  ];
 
   const handleEmailClick = (e) => {
     // Copy the email to clipboard as a premium fallback
@@ -153,6 +163,11 @@ function App() {
       };
     }
   }, [preloaderVisible]);
+
+  // Scroll to top when transitioning to/from the subpage
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [showAshtechPage]);
 
   // Track scroll position to update header background, scroll spy, and animations
   useEffect(() => {
@@ -358,6 +373,12 @@ function App() {
   ];
 
   const getFloatingStyle = () => {
+    // If the subpage is open, hide the landing page floating logo
+    if (showAshtechPage) {
+      return {
+        display: 'none'
+      };
+    }
     // 1. Preloader State: Centered exactly in the preloader viewport area
     if (logoState === 'preloader') {
       return {
@@ -444,8 +465,57 @@ function App() {
         <img src="/rsvp full.png" alt="RSVP Logo" className="brand-logo-img" />
       </div>
 
-      {/* Header element replicating the exact layout of the reference image */}
-      <header className={`header ${isHeaderScrolled ? 'scrolled' : ''}`}>
+      {showAshtechPage ? (
+        <div className="ashtech-page">
+          <header className="ashtech-header">
+            <button className="ashtech-back-btn" onClick={() => setShowAshtechPage(false)}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="back-arrow-svg">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+              </svg>
+              <span>Back to Home</span>
+            </button>
+            <div className="ashtech-header-logo">
+              <img src="/logo.png" alt="Logo" className="ashtech-logo-img" />
+            </div>
+          </header>
+
+          <main className="ashtech-main">
+            <div className="ashtech-title-wrap">
+              <h1 className="ashtech-page-title">ASHTECH GROUP</h1>
+              <p className="ashtech-page-subtitle">REAL ESTATE DEVELOPERS</p>
+            </div>
+
+            <div className="ashtech-grid">
+              {ashtechVideos.map((video, idx) => (
+                <div 
+                  key={idx} 
+                  className="work-card"
+                  onClick={() => setActiveVideo(video.src)}
+                >
+                  <video
+                    className="work-card-video"
+                    src={video.src}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="auto"
+                  />
+                  <div className="work-card-overlay">
+                    <div className="work-card-text">
+                      <h3 className="work-card-title">Video {idx + 1}</h3>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </main>
+        </div>
+      ) : (
+        <>
+          {/* Header element replicating the exact layout of the reference image */}
+          <header className={`header ${isHeaderScrolled ? 'scrolled' : ''}`}>
         <div className="header-left">
           <img src="/logo.png" alt="Logo" className="header-logo-img" />
           <span className="line line-short"></span>
@@ -613,6 +683,21 @@ function App() {
                     <div className="work-card-text">
                       <h3 className="work-card-title">{project.name}</h3>
                       <p className="work-card-subtitle">{project.category}</p>
+                      {project.id === 4 && (
+                        <button
+                          className="work-card-explore-btn"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setShowAshtechPage(true);
+                          }}
+                        >
+                          <span>Explore More</span>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="explore-arrow-svg">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                          </svg>
+                        </button>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -729,6 +814,8 @@ function App() {
           </div>
         </section>
       </main>
+        </>
+      )}
 
       {/* Video Modal Lightbox — native player with full controls */}
       {activeVideo && (
