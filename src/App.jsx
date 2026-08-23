@@ -178,7 +178,7 @@ function App() {
       setIsHeaderScrolled(scrollPos > 50);
 
       // Scroll Spy logic
-      const sections = ['hero', 'mission', 'work', 'services', 'contact'];
+      const sections = ['hero', 'mission', 'work', 'team', 'services', 'contact'];
       let currentSection = 'hero';
       
       for (const sectionId of sections) {
@@ -214,8 +214,9 @@ function App() {
 
       // Calculate scroll progress for RSVP logo animation
       if (isMeasured && coords.missionY > 0) {
+        const isMobile = window.innerWidth < 768;
         const start = 0;
-        const end = Math.max(100, coords.missionY - 180);
+        const end = isMobile ? 140 : Math.max(100, coords.missionY - 180);
         const progress = Math.min(1, Math.max(0, (scrollPos - start) / (end - start)));
         setScrollProgress(progress);
       }
@@ -271,21 +272,7 @@ function App() {
     }
   };
 
-  const getActiveSlot = (section) => {
-    switch (section) {
-      case 'hero':
-      case 'mission':
-        return 0;
-      case 'work':
-        return 1;
-      case 'services':
-        return 2;
-      case 'contact':
-        return 3;
-      default:
-        return 0;
-    }
-  };
+
 
   const projects = [
     {
@@ -319,6 +306,76 @@ function App() {
       video: '/Video 1 (6).mp4'
     }
   ];
+
+  const teamRow1 = [
+    {
+      name: 'Ritika',
+      designation: 'COO (Partner)',
+      avatar: '/team/ritika.jpeg'
+    },
+    {
+      name: 'Vaibhav Sharma',
+      designation: 'Creative Head (Partner)',
+      avatar: '/team/vaibhav.jpeg'
+    }
+  ];
+
+  const teamRow2 = [
+    {
+      name: 'Radhika',
+      designation: 'Accounts Director',
+      avatar: '/team/radhika.webp',
+      customClass: 'team-avatar-radhika'
+    },
+    {
+      name: 'Priya',
+      designation: 'Copy and strategy Head',
+      avatar: '/team/priya.webp',
+      customClass: 'team-avatar-priya'
+    },
+    {
+      name: 'Heena Tyagi',
+      designation: 'AI Head',
+      avatar: '/team/heena.jpeg'
+    }
+  ];
+
+  const teamRow3 = [
+    {
+      name: 'Nitin',
+      designation: 'SEO & Analytics Head',
+      avatar: '/team/Nitin.jpeg'
+    },
+    {
+      name: 'Rahul Kumar',
+      designation: 'Sr. Art Director',
+      avatar: '/team/rahul.jpeg',
+      customClass: 'team-avatar-rahul'
+    },
+    {
+      name: 'Manav',
+      designation: 'Web Developer Expert',
+      avatar: '/team/Manav.png'
+    }
+  ];
+
+  const getActiveSlot = (section) => {
+    switch (section) {
+      case 'hero':
+      case 'mission':
+        return 0;
+      case 'work':
+        return 1;
+      case 'team':
+        return 2;
+      case 'services':
+        return 3;
+      case 'contact':
+        return 4;
+      default:
+        return 0;
+    }
+  };
 
   const services = [
     {
@@ -561,10 +618,10 @@ function App() {
           </div>
 
           <button
-            onClick={() => scrollToSection('services')}
-            className={`glow-btn ${activeSection === 'services' ? 'active' : ''}`}
+            onClick={() => scrollToSection('team')}
+            className={`glow-btn ${activeSection === 'team' ? 'active' : ''}`}
           >
-            Our Services
+            Our Team
           </button>
 
           <div className={`nav-line-slot ${getActiveSlot(activeSection) === 2 ? 'active-long' : 'collapsed'}`}>
@@ -575,16 +632,30 @@ function App() {
           </div>
 
           <button
-            onClick={() => scrollToSection('contact')}
-            className={`glow-btn ${activeSection === 'contact' ? 'active' : ''}`}
+            onClick={() => scrollToSection('services')}
+            className={`glow-btn ${activeSection === 'services' ? 'active' : ''}`}
           >
-            Get In Touch
+            Our Services
           </button>
 
           <div className={`nav-line-slot ${getActiveSlot(activeSection) === 3 ? 'active-long' : 'collapsed'}`}>
             <div 
               className="nav-line-progress" 
               style={{ width: `${getActiveSlot(activeSection) === 3 ? activeProgress : 0}%` }}
+            ></div>
+          </div>
+
+          <button
+            onClick={() => scrollToSection('contact')}
+            className={`glow-btn ${activeSection === 'contact' ? 'active' : ''}`}
+          >
+            Get In Touch
+          </button>
+
+          <div className={`nav-line-slot ${getActiveSlot(activeSection) === 4 ? 'active-long' : 'collapsed'}`}>
+            <div 
+              className="nav-line-progress" 
+              style={{ width: `${getActiveSlot(activeSection) === 4 ? activeProgress : 0}%` }}
             ></div>
           </div>
         </nav>
@@ -711,6 +782,81 @@ function App() {
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </button>
+          </div>
+        </section>
+
+
+        {/* TEAM SECTION */}
+        <section id="team" className="team-section">
+          <div className="container">
+            <div className="team-header-block">
+              <h2 className="team-main-title">
+                We are the people <br /> who make up <span>RSVP</span>
+              </h2>
+            </div>
+
+            {/* Row 1: 2 members (Ritika & Vaibhav) */}
+            <div className="team-grid team-grid-row-3">
+              {teamRow1.map((member, idx) => (
+                <div key={idx} className="team-card">
+                  <div className="team-avatar-wrap">
+                    <img src={member.avatar} alt={member.name} className={`team-avatar ${member.customClass || ''}`} />
+                  </div>
+                  <div className="team-meta">
+                    <div className="team-name-row">
+                      <h3 className="team-name">{member.name}</h3>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="team-arrow-svg">
+                        <line x1="7" y1="17" x2="17" y2="7"></line>
+                        <polyline points="7 7 17 7 17 17"></polyline>
+                      </svg>
+                    </div>
+                    <p className="team-designation">{member.designation}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Row 2: 3 members */}
+            <div className="team-grid team-grid-row-3">
+              {teamRow2.map((member, idx) => (
+                <div key={idx} className="team-card">
+                  <div className="team-avatar-wrap">
+                    <img src={member.avatar} alt={member.name} className={`team-avatar ${member.customClass || ''}`} />
+                  </div>
+                  <div className="team-meta">
+                    <div className="team-name-row">
+                      <h3 className="team-name">{member.name}</h3>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="team-arrow-svg">
+                        <line x1="7" y1="17" x2="17" y2="7"></line>
+                        <polyline points="7 7 17 7 17 17"></polyline>
+                      </svg>
+                    </div>
+                    <p className="team-designation">{member.designation}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Row 3: 3 members */}
+            <div className="team-grid team-grid-row-3">
+              {teamRow3.map((member, idx) => (
+                <div key={idx} className="team-card">
+                  <div className="team-avatar-wrap">
+                    <img src={member.avatar} alt={member.name} className={`team-avatar ${member.customClass || ''}`} />
+                  </div>
+                  <div className="team-meta">
+                    <div className="team-name-row">
+                      <h3 className="team-name">{member.name}</h3>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="team-arrow-svg">
+                        <line x1="7" y1="17" x2="17" y2="7"></line>
+                        <polyline points="7 7 17 7 17 17"></polyline>
+                      </svg>
+                    </div>
+                    <p className="team-designation">{member.designation}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
