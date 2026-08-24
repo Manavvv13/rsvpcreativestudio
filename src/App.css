@@ -1293,6 +1293,11 @@ body.preloader-active {
   height: 100vh !important;
 }
 
+body.preloader-active .header {
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
 /* Preloader Overlay */
 .preloader-overlay {
   position: fixed;
@@ -1301,7 +1306,7 @@ body.preloader-active {
   width: 100%;
   height: 100vh;
   background-color: #000000;
-  z-index: 9999;
+  z-index: 20000;
   display: flex;
   align-items: center;
   justify-content: center;
