@@ -445,7 +445,7 @@ function App() {
         width: 'clamp(80px, 12vw, 120px)',
         height: 'clamp(80px, 12vw, 120px)',
         transform: 'translate(-50%, -50%)',
-        zIndex: 10000,
+        zIndex: 25000,
         pointerEvents: 'none',
         whiteSpace: 'nowrap',
         opacity: 1,
@@ -461,7 +461,7 @@ function App() {
         width: isMeasured ? `${coords.heroW}px` : 'clamp(80px, 12vw, 120px)',
         height: isMeasured ? `${coords.heroH}px` : 'clamp(80px, 12vw, 120px)',
         transform: 'translate(-50%, -50%)', // Keeps centering anchor intact during fly
-        zIndex: 10000, // On top of preloader until arrival
+        zIndex: 25000, // On top of preloader until arrival
         pointerEvents: 'none',
         whiteSpace: 'nowrap',
         opacity: 1,
