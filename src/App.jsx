@@ -323,13 +323,13 @@ function App() {
   const teamRow2 = [
     {
       name: 'Radhika',
-      designation: 'Accounts Director',
+      designation: 'Account Director',
       avatar: '/team/radhika.webp',
       customClass: 'team-avatar-radhika'
     },
     {
       name: 'Priya',
-      designation: 'Copy and strategy Head',
+      designation: 'Copy and Strategy Head',
       avatar: '/team/priya.webp',
       customClass: 'team-avatar-priya'
     },
@@ -348,7 +348,7 @@ function App() {
     },
     {
       name: 'Rahul Kumar',
-      designation: 'Sr. Art Director',
+      designation: 'Art Group Head',
       avatar: '/team/rahul.jpeg',
       customClass: 'team-avatar-rahul'
     },
