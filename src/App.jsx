@@ -175,7 +175,7 @@ function App() {
       const scrollPos = window.scrollY;
       
       // Header background opacity trigger
-      setIsHeaderScrolled(scrollPos > 50);
+      setIsHeaderScrolled(scrollPos > 20);
 
       // Scroll Spy logic
       const sections = ['hero', 'mission', 'work', 'team', 'services', 'contact'];
