@@ -4,22 +4,17 @@
   top: 0;
   left: 0;
   width: 100%;
-  padding: 36px 40px; /* Moved navbar lower by increasing padding */
+  padding: 18px 40px;
   display: flex;
   align-items: center;
   z-index: 9999;
-  background: transparent;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  box-sizing: border-box;
-}
-
-.header.scrolled {
-  padding: 16px 40px;
   background: rgba(0, 0, 0, 0.9);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
 }
 
 .header-left {
@@ -1176,7 +1171,7 @@
     height: 120px;
   }
   .header {
-    padding: 24px 24px; /* Moved navbar lower on mobile by increasing padding */
+    padding: 14px 20px;
   }
   .nav-menu-flow {
     position: fixed;
