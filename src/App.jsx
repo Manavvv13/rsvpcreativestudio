@@ -329,7 +329,7 @@ function App() {
     },
     {
       name: 'Priya',
-      designation: 'Copy and Strategy Head',
+      designation: 'Copy & Strategy Head',
       avatar: '/team/priya.webp',
       customClass: 'team-avatar-priya'
     },
