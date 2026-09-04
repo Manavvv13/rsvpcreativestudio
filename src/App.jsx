@@ -865,7 +865,7 @@ function App() {
             }}
             className="glow-btn nav-contact-page-btn"
           >
-            Contact Page
+            Contact Us
           </button>
         </nav>
       </header>
@@ -1128,19 +1128,8 @@ function App() {
         {/* CONTACT SECTION */}
         <section id="contact" className="contact-section">
           <div className="contact-container">
-            {/* Quick Interactive Contact Actions */}
+            {/* Action Buttons: Write to Us & Book a call */}
             <div className="contact-pills-wrap">
-              <button 
-                onClick={() => setShowContactPage(true)}
-                className="contact-pill-btn contact-pill-primary"
-              >
-                <span>Launch Full Contact Page</span>
-                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" strokeWidth="2.5" fill="none" style={{ marginLeft: 8 }}>
-                  <line x1="5" y1="12" x2="19" y2="12"></line>
-                  <polyline points="12 5 19 12 12 19"></polyline>
-                </svg>
-              </button>
-
               <div className="contact-action-row">
                 <a 
                   href="https://mail.google.com/mail/?view=cm&tf=0&to=vaibhav@rsvpcreativestudio.com" 
@@ -1149,10 +1138,10 @@ function App() {
                   className="contact-pill-btn"
                   onClick={handleEmailClick}
                 >
-                  {emailCopied ? 'Copied to Clipboard!' : 'Email Us Direct'}
+                  {emailCopied ? 'Copied to Clipboard!' : 'Write to Us'}
                 </a>
                 <a href="https://wa.me/917498125252" target="_blank" rel="noopener noreferrer" className="contact-pill-btn">
-                  WhatsApp Call
+                  Book a call
                 </a>
               </div>
 
