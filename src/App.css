@@ -1831,7 +1831,8 @@ body.preloader-active .header {
   text-align: left;
 }
 
-.about-lead-text {
+.about-lead-text,
+.about-body-text {
   font-family: var(--font-sans);
   font-size: clamp(1.35rem, 2.3vw, 2.05rem);
   font-weight: 500;
@@ -1840,16 +1841,6 @@ body.preloader-active .header {
   letter-spacing: -0.02em;
   margin-bottom: 24px;
   max-width: 1080px;
-}
-
-.about-body-text {
-  font-family: var(--font-sans);
-  font-size: clamp(0.98rem, 1.2vw, 1.2rem);
-  font-weight: 400;
-  color: var(--text-muted);
-  line-height: 1.8;
-  max-width: 1000px;
-  margin: 0;
 }
 
 /* DEDICATED CONTACT US PAGE STYLES */
