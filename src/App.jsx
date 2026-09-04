@@ -924,65 +924,15 @@ function App() {
               <h2 className="section-title">
                 About <span>RSVP</span>
               </h2>
-              <p className="section-subtitle">
-                A premier creative studio blending high-end aesthetic craft with state-of-the-art artificial intelligence.
-              </p>
             </div>
 
-            <div className="about-content-grid">
-              <div className="about-narrative-card">
-                <div className="about-badge">OUR PHILOSOPHY</div>
-                <h3 className="about-card-title">Where Human Aesthetics Meet AI Acceleration</h3>
-                <p className="about-card-text">
-                  Founded on the principle that true digital innovation lives at the intersection of human artistic intuition and generative machine intelligence, RSVP Creative Studio delivers end-to-end brand experiences.
-                </p>
-                <p className="about-card-text">
-                  From brand design and copy strategy to custom React web architectures and AI-driven content engines, we empower forward-thinking enterprises to command attention in a fast-evolving digital landscape.
-                </p>
-
-                <div className="about-stats-row">
-                  <div className="about-stat-item">
-                    <span className="about-stat-number">08+</span>
-                    <span className="about-stat-label">Specialist Minds</span>
-                  </div>
-                  <div className="about-stat-item">
-                    <span className="about-stat-number">100%</span>
-                    <span className="about-stat-label">Bespoke AI Integration</span>
-                  </div>
-                  <div className="about-stat-item">
-                    <span className="about-stat-number">2026</span>
-                    <span className="about-stat-label">Next-Gen Studio</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="about-pillars-column">
-                <div className="about-pillar-card">
-                  <div className="pillar-icon-wrap">
-                    <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" strokeWidth="2" fill="none">
-                      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                    </svg>
-                  </div>
-                  <div className="pillar-text">
-                    <h4>The Creativity Engine</h4>
-                    <p>Led by Executive Leadership—Ritika (COO), Vaibhav Sharma (Creative Head), & Radhika (Accounts Director)—crafting luxury visuals, brand identity, and narrative copy strategy.</p>
-                  </div>
-                </div>
-
-                <div className="about-pillar-card">
-                  <div className="pillar-icon-wrap">
-                    <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" strokeWidth="2" fill="none">
-                      <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                      <line x1="8" y1="21" x2="16" y2="21"></line>
-                      <line x1="12" y1="17" x2="12" y2="21"></line>
-                    </svg>
-                  </div>
-                  <div className="pillar-text">
-                    <h4>The Tech & AI Engine</h4>
-                    <p>Engineered by AI Head Heena Tyagi, Web Developer Expert Manav, and SEO & Analytics Head Nitin—building high-speed frontend systems, LLM automation, and data growth engines.</p>
-                  </div>
-                </div>
-              </div>
+            <div className="about-paragraph-wrap">
+              <p className="about-lead-text">
+                RSVP Creative Studio is a next-generation design and digital agency. Founded on the principle that true innovation lives at the intersection of human artistic craft and artificial intelligence, we deliver end-to-end brand experiences.
+              </p>
+              <p className="about-body-text">
+                From brand identity and narrative strategy to custom React web architectures, LLM automation, and AI-driven content engines, our multidisciplinary team empowers forward-thinking enterprises to command attention in a fast-evolving digital landscape.
+              </p>
             </div>
           </div>
         </section>
