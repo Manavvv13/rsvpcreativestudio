@@ -311,27 +311,27 @@ function App() {
   const projects = [
     {
       id: 1,
-      name: 'EUD Group',
-      category: 'Real Estate Company',
-      video: '/Video 1 (1).mp4'
+      name: 'Ashtech Group',
+      category: 'Real Estate Developers',
+      video: '/reel 4.mp4'
     },
     {
       id: 2,
-      name: 'Lumora Estates',
-      category: 'Real Estate Builders',
-      video: '/Video 1 (2).mp4'
-    },
-    {
-      id: 3,
       name: 'JMDR Arihant Green',
       category: 'Blisstown Developers Pvt Ltd',
       video: '/Video 1 (3).mp4'
     },
     {
+      id: 3,
+      name: 'EUD Group',
+      category: 'Real Estate Company',
+      video: '/Video 1 (1).mp4'
+    },
+    {
       id: 4,
-      name: 'Ashtech Group',
-      category: 'Real Estate Developers',
-      video: '/reel 4.mp4'
+      name: 'Lumora Estates',
+      category: 'Real Estate Builders',
+      video: '/Video 1 (2).mp4'
     },
     {
       id: 5,
@@ -1033,7 +1033,7 @@ function App() {
                     <div className="work-card-text">
                       <h3 className="work-card-title">{project.name}</h3>
                       <p className="work-card-subtitle">{project.category}</p>
-                      {project.id === 4 && (
+                      {project.name.includes('Ashtech') && (
                         <button
                           className="work-card-explore-btn"
                           onClick={(e) => {
