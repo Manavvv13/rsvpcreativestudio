@@ -10,6 +10,40 @@ function App() {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [emailCopied, setEmailCopied] = useState(false);
   const [showAshtechPage, setShowAshtechPage] = useState(false);
+  const [showContactPage, setShowContactPage] = useState(false);
+
+  const [contactFormData, setContactFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    service: 'Brand Design & Identity',
+    budget: '$5k - $15k',
+    message: ''
+  });
+  const [contactFormSubmitted, setContactFormSubmitted] = useState(false);
+
+  const handleContactInputChange = (e) => {
+    const { name, value } = e.target;
+    setContactFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleContactFormSubmit = (e) => {
+    e.preventDefault();
+    if (contactFormData.name && contactFormData.email && contactFormData.message) {
+      setContactFormSubmitted(true);
+      setTimeout(() => {
+        setContactFormData({
+          name: '',
+          email: '',
+          phone: '',
+          service: 'Brand Design & Identity',
+          budget: '$5k - $15k',
+          message: ''
+        });
+        setContactFormSubmitted(false);
+      }, 5000);
+    }
+  };
 
   const ashtechVideos = [
     { src: '/ash 1.mp4' },
@@ -178,7 +212,7 @@ function App() {
       setIsHeaderScrolled(scrollPos > 20);
 
       // Scroll Spy logic
-      const sections = ['hero', 'mission', 'work', 'team', 'services', 'contact'];
+      const sections = ['hero', 'mission', 'about', 'work', 'team', 'services', 'contact'];
       let currentSection = 'hero';
       
       for (const sectionId of sections) {
@@ -364,14 +398,16 @@ function App() {
       case 'hero':
       case 'mission':
         return 0;
-      case 'work':
+      case 'about':
         return 1;
-      case 'team':
+      case 'work':
         return 2;
-      case 'services':
+      case 'team':
         return 3;
-      case 'contact':
+      case 'services':
         return 4;
+      case 'contact':
+        return 5;
       default:
         return 0;
     }
@@ -381,23 +417,30 @@ function App() {
     {
       id: 1,
       number: '01',
-      title: 'Social Media & Influence',
-      desc: 'Content creation, viral campaigns, brand positioning, and social community growth strategies.',
+      title: 'Brand Design & Identity',
+      desc: 'Creative direction, visual styling guidelines, bespoke typography, vector assets, and digital brand strategy.',
       icon: (
         <svg viewBox="0 0 24 24" width="36" height="36" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" className="service-icon">
-          <circle cx="18" cy="5" r="3"></circle>
-          <circle cx="6" cy="12" r="3"></circle>
-          <circle cx="18" cy="19" r="3"></circle>
-          <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
-          <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
         </svg>
       )
     },
     {
       id: 2,
       number: '02',
+      title: 'AI Solutions & Content',
+      desc: 'Leveraging cutting-edge AI models and generative tools to conceptualize, craft, and automate high-impact visual media, viral copy, dynamic marketing assets, and creative content at scale.',
+      icon: (
+        <svg viewBox="0 0 24 24" width="36" height="36" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" className="service-icon">
+          <path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m11.314 11.314l.707-.707M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10z"></path>
+        </svg>
+      )
+    },
+    {
+      id: 3,
+      number: '03',
       title: 'Web Design & Development',
-      desc: 'Headless CMS integrations, premium interactive portfolios, high-performance Vite & Next.js systems.',
+      desc: 'Headless CMS integrations, premium interactive web applications, high-performance Vite & Next.js systems.',
       icon: (
         <svg viewBox="0 0 24 24" width="36" height="36" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" className="service-icon">
           <polyline points="16 18 22 12 16 6"></polyline>
@@ -406,24 +449,15 @@ function App() {
       )
     },
     {
-      id: 3,
-      number: '03',
-      title: 'AI Solutions & Workflows',
-      desc: 'Custom LLM integrations, retrieval augmented generation, intelligent chatbots, and workflow automation.',
-      icon: (
-        <svg viewBox="0 0 24 24" width="36" height="36" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" className="service-icon">
-          <path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m11.314 11.314l.707-.707M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10z"></path>
-        </svg>
-      )
-    },
-    {
       id: 4,
       number: '04',
-      title: 'Brand Design & Identity',
-      desc: 'Creative direction, visual styling guidelines, typography design, vector assets, and digital strategy.',
+      title: 'SEO & Analytics',
+      desc: 'Search engine optimization, keyword strategy, data analytics, conversion rate optimization, and digital traffic growth.',
       icon: (
         <svg viewBox="0 0 24 24" width="36" height="36" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" className="service-icon">
-          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+          <line x1="18" y1="20" x2="18" y2="10"></line>
+          <line x1="12" y1="20" x2="12" y2="4"></line>
+          <line x1="6" y1="20" x2="6" y2="14"></line>
         </svg>
       )
     }
@@ -522,7 +556,165 @@ function App() {
         <img src="/rsvp full.png" alt="RSVP Logo" className="brand-logo-img" />
       </div>
 
-      {showAshtechPage ? (
+      {showContactPage ? (
+        <div className="ashtech-page contact-page-subpage">
+          <header className="ashtech-header">
+            <button className="ashtech-back-btn" onClick={() => setShowContactPage(false)}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="back-arrow-svg">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+              </svg>
+              <span>Back to Home</span>
+            </button>
+            <div className="ashtech-header-logo">
+              <img src="/logo.png" alt="Logo" className="ashtech-logo-img" />
+            </div>
+          </header>
+
+          <main className="ashtech-main contact-page-main">
+            <div className="contact-page-title-wrap">
+              <h1 className="ashtech-page-title">CONTACT US</h1>
+              <p className="ashtech-page-subtitle">LET'S BUILD SOMETHING EXTRAORDINARY TOGETHER</p>
+            </div>
+
+            <div className="contact-page-container">
+              <div className="contact-page-grid">
+                {/* Contact Form Card */}
+                <div className="contact-form-glass-card">
+                  <h3 className="form-card-title">Send Us A Message</h3>
+                  {contactFormSubmitted ? (
+                    <div className="contact-success-banner">
+                      <div className="success-icon-ring">✓</div>
+                      <h4>Inquiry Received!</h4>
+                      <p>Thank you for reaching out. Our executive team will get back to you within 24 hours.</p>
+                    </div>
+                  ) : (
+                    <form onSubmit={handleContactFormSubmit} className="contact-form-element">
+                      <div className="form-row-2">
+                        <div className="form-group-item">
+                          <label>Full Name *</label>
+                          <input 
+                            type="text" 
+                            name="name" 
+                            value={contactFormData.name}
+                            onChange={handleContactInputChange}
+                            placeholder="John Doe"
+                            required
+                          />
+                        </div>
+                        <div className="form-group-item">
+                          <label>Email Address *</label>
+                          <input 
+                            type="email" 
+                            name="email" 
+                            value={contactFormData.email}
+                            onChange={handleContactInputChange}
+                            placeholder="john@company.com"
+                            required
+                          />
+                        </div>
+                      </div>
+
+                      <div className="form-row-2">
+                        <div className="form-group-item">
+                          <label>Phone Number</label>
+                          <input 
+                            type="tel" 
+                            name="phone" 
+                            value={contactFormData.phone}
+                            onChange={handleContactInputChange}
+                            placeholder="+91 98765 43210"
+                          />
+                        </div>
+                        <div className="form-group-item">
+                          <label>Service Interest</label>
+                          <select 
+                            name="service" 
+                            value={contactFormData.service}
+                            onChange={handleContactInputChange}
+                          >
+                            <option value="Brand Design & Identity">Brand Design & Identity</option>
+                            <option value="AI Solutions & Content">AI Solutions & Content</option>
+                            <option value="Web Design & Development">Web Design & Development</option>
+                            <option value="SEO & Analytics">SEO & Analytics</option>
+                            <option value="Full Studio Project">Full Studio Package</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <div className="form-group-item">
+                        <label>Your Message *</label>
+                        <textarea 
+                          name="message" 
+                          rows="5"
+                          value={contactFormData.message}
+                          onChange={handleContactInputChange}
+                          placeholder="Tell us about your brand vision, project requirements, and timeline..."
+                          required
+                        ></textarea>
+                      </div>
+
+                      <button type="submit" className="contact-submit-btn">
+                        <span>Send Project Inquiry</span>
+                        <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="2.5" fill="none">
+                          <line x1="5" y1="12" x2="19" y2="12"></line>
+                          <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                      </button>
+                    </form>
+                  )}
+                </div>
+
+                {/* Direct Studio Contact Cards */}
+                <div className="contact-direct-column">
+                  <div className="contact-direct-card">
+                    <div className="direct-icon-wrap">
+                      <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                      </svg>
+                    </div>
+                    <div className="direct-info">
+                      <span className="direct-label">Email Us Direct</span>
+                      <a href="mailto:vaibhav@rsvpcreativestudio.com" className="direct-value-link">vaibhav@rsvpcreativestudio.com</a>
+                    </div>
+                  </div>
+
+                  <div className="contact-direct-card">
+                    <div className="direct-icon-wrap">
+                      <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                      </svg>
+                    </div>
+                    <div className="direct-info">
+                      <span className="direct-label">Call & WhatsApp</span>
+                      <a href="https://wa.me/917498125252" target="_blank" rel="noopener noreferrer" className="direct-value-link">+91 7498125252</a>
+                    </div>
+                  </div>
+
+                  <div className="contact-direct-card">
+                    <div className="direct-icon-wrap">
+                      <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                      </svg>
+                    </div>
+                    <div className="direct-info">
+                      <span className="direct-label">Studio Address</span>
+                      <p className="direct-address-text">B 403 2nd Patel Nagar, Ghaziabad 201001 U.P.</p>
+                    </div>
+                  </div>
+
+                  <div className="contact-status-card">
+                    <span className="status-dot"></span>
+                    <span>Available for new projects in 2026</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </main>
+        </div>
+      ) : showAshtechPage ? (
         <div className="ashtech-page">
           <header className="ashtech-header">
             <button className="ashtech-back-btn" onClick={() => setShowAshtechPage(false)}>
@@ -604,10 +796,10 @@ function App() {
           </div>
 
           <button
-            onClick={() => scrollToSection('work')}
-            className={`glow-btn ${activeSection === 'work' ? 'active' : ''}`}
+            onClick={() => scrollToSection('about')}
+            className={`glow-btn ${activeSection === 'about' ? 'active' : ''}`}
           >
-            Our Work
+            About Us
           </button>
 
           <div className={`nav-line-slot ${getActiveSlot(activeSection) === 1 ? 'active-long' : 'collapsed'}`}>
@@ -618,10 +810,10 @@ function App() {
           </div>
 
           <button
-            onClick={() => scrollToSection('team')}
-            className={`glow-btn ${activeSection === 'team' ? 'active' : ''}`}
+            onClick={() => scrollToSection('work')}
+            className={`glow-btn ${activeSection === 'work' ? 'active' : ''}`}
           >
-            Our Team
+            Our Work
           </button>
 
           <div className={`nav-line-slot ${getActiveSlot(activeSection) === 2 ? 'active-long' : 'collapsed'}`}>
@@ -632,10 +824,10 @@ function App() {
           </div>
 
           <button
-            onClick={() => scrollToSection('services')}
-            className={`glow-btn ${activeSection === 'services' ? 'active' : ''}`}
+            onClick={() => scrollToSection('team')}
+            className={`glow-btn ${activeSection === 'team' ? 'active' : ''}`}
           >
-            Our Services
+            Our Team
           </button>
 
           <div className={`nav-line-slot ${getActiveSlot(activeSection) === 3 ? 'active-long' : 'collapsed'}`}>
@@ -646,10 +838,10 @@ function App() {
           </div>
 
           <button
-            onClick={() => scrollToSection('contact')}
-            className={`glow-btn ${activeSection === 'contact' ? 'active' : ''}`}
+            onClick={() => scrollToSection('services')}
+            className={`glow-btn ${activeSection === 'services' ? 'active' : ''}`}
           >
-            Get In Touch
+            Our Services
           </button>
 
           <div className={`nav-line-slot ${getActiveSlot(activeSection) === 4 ? 'active-long' : 'collapsed'}`}>
@@ -658,6 +850,23 @@ function App() {
               style={{ width: `${getActiveSlot(activeSection) === 4 ? activeProgress : 0}%` }}
             ></div>
           </div>
+
+          <button
+            onClick={() => scrollToSection('contact')}
+            className={`glow-btn ${activeSection === 'contact' ? 'active' : ''}`}
+          >
+            Get In Touch
+          </button>
+
+          <button
+            onClick={() => {
+              setIsMobileMenuOpen(false);
+              setShowContactPage(true);
+            }}
+            className="glow-btn nav-contact-page-btn"
+          >
+            Contact Page
+          </button>
         </nav>
       </header>
 
@@ -703,6 +912,76 @@ function App() {
               <div className="mission-line">
                 <span className="mission-text-line">ACCELERATED BY</span>
                 <span className="mission-pill">AI.</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ABOUT US SECTION */}
+        <section id="about" className="about-section">
+          <div className="container">
+            <div className="about-header-block">
+              <h2 className="section-title">
+                About <span>RSVP</span>
+              </h2>
+              <p className="section-subtitle">
+                A premier creative studio blending high-end aesthetic craft with state-of-the-art artificial intelligence.
+              </p>
+            </div>
+
+            <div className="about-content-grid">
+              <div className="about-narrative-card">
+                <div className="about-badge">OUR PHILOSOPHY</div>
+                <h3 className="about-card-title">Where Human Aesthetics Meet AI Acceleration</h3>
+                <p className="about-card-text">
+                  Founded on the principle that true digital innovation lives at the intersection of human artistic intuition and generative machine intelligence, RSVP Creative Studio delivers end-to-end brand experiences.
+                </p>
+                <p className="about-card-text">
+                  From brand design and copy strategy to custom React web architectures and AI-driven content engines, we empower forward-thinking enterprises to command attention in a fast-evolving digital landscape.
+                </p>
+
+                <div className="about-stats-row">
+                  <div className="about-stat-item">
+                    <span className="about-stat-number">08+</span>
+                    <span className="about-stat-label">Specialist Minds</span>
+                  </div>
+                  <div className="about-stat-item">
+                    <span className="about-stat-number">100%</span>
+                    <span className="about-stat-label">Bespoke AI Integration</span>
+                  </div>
+                  <div className="about-stat-item">
+                    <span className="about-stat-number">2026</span>
+                    <span className="about-stat-label">Next-Gen Studio</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="about-pillars-column">
+                <div className="about-pillar-card">
+                  <div className="pillar-icon-wrap">
+                    <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" strokeWidth="2" fill="none">
+                      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                    </svg>
+                  </div>
+                  <div className="pillar-text">
+                    <h4>The Creativity Engine</h4>
+                    <p>Led by Executive Leadership—Ritika (COO), Vaibhav Sharma (Creative Head), & Radhika (Accounts Director)—crafting luxury visuals, brand identity, and narrative copy strategy.</p>
+                  </div>
+                </div>
+
+                <div className="about-pillar-card">
+                  <div className="pillar-icon-wrap">
+                    <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" strokeWidth="2" fill="none">
+                      <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                      <line x1="8" y1="21" x2="16" y2="21"></line>
+                      <line x1="12" y1="17" x2="12" y2="21"></line>
+                    </svg>
+                  </div>
+                  <div className="pillar-text">
+                    <h4>The Tech & AI Engine</h4>
+                    <p>Engineered by AI Head Heena Tyagi, Web Developer Expert Manav, and SEO & Analytics Head Nitin—building high-speed frontend systems, LLM automation, and data growth engines.</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -899,20 +1178,33 @@ function App() {
         {/* CONTACT SECTION */}
         <section id="contact" className="contact-section">
           <div className="contact-container">
-            {/* Email Pills aligned to the right */}
+            {/* Quick Interactive Contact Actions */}
             <div className="contact-pills-wrap">
-              <a 
-                href="https://mail.google.com/mail/?view=cm&tf=0&to=vaibhav@rsvpcreativestudio.com" 
-                target="_blank"
-                rel="noopener noreferrer"
-                className="contact-pill-btn"
-                onClick={handleEmailClick}
+              <button 
+                onClick={() => setShowContactPage(true)}
+                className="contact-pill-btn contact-pill-primary"
               >
-                {emailCopied ? 'Copied to Clipboard!' : 'Email Us'}
-              </a>
-              <a href="https://wa.me/917498125252" target="_blank" rel="noopener noreferrer" className="contact-pill-btn">
-                Book a call
-              </a>
+                <span>Launch Full Contact Page</span>
+                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" strokeWidth="2.5" fill="none" style={{ marginLeft: 8 }}>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </button>
+
+              <div className="contact-action-row">
+                <a 
+                  href="https://mail.google.com/mail/?view=cm&tf=0&to=vaibhav@rsvpcreativestudio.com" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="contact-pill-btn"
+                  onClick={handleEmailClick}
+                >
+                  {emailCopied ? 'Copied to Clipboard!' : 'Email Us Direct'}
+                </a>
+                <a href="https://wa.me/917498125252" target="_blank" rel="noopener noreferrer" className="contact-pill-btn">
+                  WhatsApp Call
+                </a>
+              </div>
 
               <div className="contact-info-text contact-address-bottom">
                 <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" strokeWidth="2.2" fill="none" strokeLinecap="round" strokeLinejoin="round" className="location-icon-svg">
