@@ -329,12 +329,6 @@ function App() {
     },
     {
       id: 4,
-      name: 'Lumora Estates',
-      category: 'Real Estate Builders',
-      video: '/Video 1 (2).mp4'
-    },
-    {
-      id: 5,
       name: 'Earthcon',
       category: 'Real Estate Developers',
       video: '/Video 1 (6).mp4'
