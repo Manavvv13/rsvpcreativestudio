@@ -387,6 +387,19 @@ function App() {
     }
   ];
 
+  const teamRow4 = [
+    {
+      name: 'Bhavesh Atote',
+      designation: 'AI Video Artist',
+      avatar: '/team/bhavesh.jpeg'
+    },
+    {
+      name: 'Nilesh Ranpise',
+      designation: 'Art Director',
+      avatar: '/team/nilesh.jpeg'
+    }
+  ];
+
   const getActiveSlot = (section) => {
     switch (section) {
       case 'hero':
@@ -1063,6 +1076,27 @@ function App() {
             {/* Row 3: 3 members */}
             <div className="team-grid team-grid-row-3">
               {teamRow3.map((member, idx) => (
+                <div key={idx} className="team-card">
+                  <div className="team-avatar-wrap">
+                    <img src={member.avatar} alt={member.name} className={`team-avatar ${member.customClass || ''}`} />
+                  </div>
+                  <div className="team-meta">
+                    <div className="team-name-row">
+                      <h3 className="team-name">{member.name}</h3>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="team-arrow-svg">
+                        <line x1="7" y1="17" x2="17" y2="7"></line>
+                        <polyline points="7 7 17 7 17 17"></polyline>
+                      </svg>
+                    </div>
+                    <p className="team-designation">{member.designation}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Row 4: 2 members (Bhavesh Atote & Nilesh Ranpise) */}
+            <div className="team-grid team-grid-row-3">
+              {teamRow4.map((member, idx) => (
                 <div key={idx} className="team-card">
                   <div className="team-avatar-wrap">
                     <img src={member.avatar} alt={member.name} className={`team-avatar ${member.customClass || ''}`} />
