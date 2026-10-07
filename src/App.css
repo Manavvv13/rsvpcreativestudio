@@ -1928,18 +1928,18 @@ body.preloader-active .header {
   margin: 0 auto;
   padding: 0 40px;
   box-sizing: border-box;
-  text-align: justify;
+  text-align: left;
 }
 
 .about-lead-text,
 .about-body-text {
   font-family: var(--font-sans);
-  font-size: clamp(1.35rem, 2.3vw, 2.05rem);
+  font-size: clamp(1.2rem, 2.2vw, 2.05rem);
   font-weight: 500;
   color: #ffffff;
-  line-height: 1.55;
+  line-height: 1.65;
   letter-spacing: -0.01em;
-  text-align: justify;
+  text-align: left;
   margin-bottom: 28px;
   max-width: 1080px;
   opacity: 0;
@@ -2235,11 +2235,20 @@ body.preloader-active .header {
 
 @media (max-width: 768px) {
   .about-section {
-    padding: 80px 0;
+    padding: 65px 0;
   }
   .about-header-block,
+  .about-paragraph-wrap,
   .about-content-grid {
     padding: 0 24px;
+  }
+  .about-lead-text,
+  .about-body-text {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    letter-spacing: 0;
+    margin-bottom: 22px;
+    text-align: left !important;
   }
   .about-narrative-card,
   .contact-form-glass-card {
